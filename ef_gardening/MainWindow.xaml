@@ -1,0 +1,54 @@
+﻿<Window x:Class="ef_gardening.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ef_gardening"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListView ItemsSource="{Binding Plants}"
+                      SelectedItem="{Binding SelectedPlant}" />
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Nom commun : "/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Nom scientifique : "/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Hauteur : "/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Famille : "/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Région : "/>
+
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedPlant.CommonName}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedPlant.ScientificName}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedPlant.Height}"/>
+
+                <ComboBox Grid.Row="3" Grid.Column="1" 
+                          ItemsSource="{Binding Families}" 
+                          SelectedItem="{Binding SelectedPlant.Family}"/>
+
+                <ComboBox Grid.Row="4" Grid.Column="1" 
+                          ItemsSource="{Binding Regions}" 
+                          SelectedItem="{Binding SelectedPlant.Region}"/>
+
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
